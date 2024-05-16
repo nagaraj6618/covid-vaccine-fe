@@ -1,8 +1,13 @@
 import React from 'react'
-
-const ErrorMessage = () => {
+import { RiCloseLine } from "react-icons/ri";
+const ErrorMessage = (props) => {
   return (
-    <div>ErrorMessage</div>
+    <div className='error-container'>
+      <div className='error-display'>
+        <p>Not Working{props.errorMessage}</p>
+        <p><RiCloseLine/></p>
+      </div>
+    </div>
   )
 }
 
