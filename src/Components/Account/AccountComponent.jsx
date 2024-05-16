@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BE_URL } from '../../info'
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 
 const AccountComponent = () => {
@@ -19,7 +19,7 @@ const AccountComponent = () => {
       setUserData(response.data);
     }
     catch (error) {
-      console.log(error.response.data);
+      // console.log(error.response.data);
 
       if (error.response) {
         setUserData(error.response.data);
@@ -101,6 +101,7 @@ const AccountComponent = () => {
   </div>
 
   <button className='btn btn-login text-white mt-5 ml-10' onClick={()=>logoutHandler()}>LogOut</button>
+    <Link to='/auth/reset-password' className='btn m-5 text-white'>Reset Password</Link>
 </div>
 
 

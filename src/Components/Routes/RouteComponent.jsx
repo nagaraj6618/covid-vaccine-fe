@@ -11,6 +11,7 @@ import OtpVerify from '../Auth/OtpVerify'
 import SingleCenterDisplayComponent from '../Centers/SingleCenterDisplayComponent'
 import AddNewCenter from '../Centers/AddNewCenter'
 import UpdateCenter from '../Centers/UpdateCenter'
+import RestPassword from '../Auth/RestPassword'
 
 const RouteComponent = () => {
   return (
@@ -27,6 +28,8 @@ const RouteComponent = () => {
       <Route path='/center/:id' element={<SingleCenterDisplayComponent/>}/>
       <Route path='/center/update/:id' element={<UpdateCenter/>}/>
       <Route path='/center/new' element={<AddNewCenter/>}/>
+
+      <Route path='/auth/reset-password' element={<RestPassword/>}/>
     </Routes>
   )
 }
