@@ -8,3 +8,16 @@
   color: white;
   cursor: pointer;
 }
+input{
+  /* border-color: blueviolet; */
+  border: 2px solid blueviolet;
+  padding: 5px;
+  border-radius: 5px;
+  height: 35px;
+}
+.btn{
+  background-color: blueviolet;
+  border-radius: 5px;
+  padding: 5px 20px;
+  border: none;
+}
