@@ -7,6 +7,7 @@ import AccountComponent from '../Account/AccountComponent'
 import AboutComponent from '../About/AboutComponent'
 import RegisterComponent from '../LoginAndRegister/RegisterComponent'
 import LoginComponent from '../LoginAndRegister/LoginComponent'
+import OtpVerify from '../Auth/OtpVerify'
 
 const RouteComponent = () => {
   return (
@@ -19,7 +20,7 @@ const RouteComponent = () => {
       <Route path='/about' element={<AboutComponent/>} />
       <Route path='/auth/login' element={<LoginComponent/>} />
       <Route path='/auth/signup' element={<RegisterComponent/>} />
-
+      <Route path='/auth/verify/otp/:id' element={<OtpVerify/>}/>
     </Routes>
   )
 }

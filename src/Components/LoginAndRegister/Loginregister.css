@@ -9,7 +9,7 @@
 .loginregisterform-container{
    background-color: rgb(138, 43, 226,0.3);
    flex-grow: 200px;
-  padding:5% 10%;
+  padding:3% 7%;
   /* width: 600px; */
   backdrop-filter: blur(10px); 
   -webkit-backdrop-filter: blur(10px); 

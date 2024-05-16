@@ -114,10 +114,10 @@ const RegisterComponent = () => {
           </div>
         </div>
         <div>
-          <button type='submit' className='btn btn-login text-white'>Login</button>
+          <button type='submit' className='btn btn-login text-white'>SignUp</button>
         </div>
         <div className='text-black'>
-          New User ? <Link to='/auth/signup' className='text-blue-500 transition hover:text-blue-700'>signup</Link>
+          Existing User ? <Link to='/auth/login' className='text-blue-500 transition hover:text-blue-700'>SignIn</Link>
         </div>
       </form>
     </div>
