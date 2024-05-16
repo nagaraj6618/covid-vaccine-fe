@@ -30,10 +30,10 @@ const HeaderComponent = () => {
 
         <div className='nav-account-container'>
           <div>
-            <Link to='/login' className='link nav-link' >Login</Link>
+            <Link to='/auth/login' className='link nav-link' >Login</Link>
           </div>
           <div>
-            <Link to='/signup' className='link nav-link' >SignUp</Link>
+            <Link to='/auth/signup' className='link nav-link' >SignUp</Link>
           </div>
         </div>
       </div>
