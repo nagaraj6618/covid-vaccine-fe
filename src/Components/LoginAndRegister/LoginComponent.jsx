@@ -10,7 +10,7 @@ import SuccessMessageComponent from '../SuccessMessage/SuccessMessageComponent';
 
 const LoginComponent = () => {
   const [loading,setLoading] = useState(true)
-  const [responseData,setResponse] = useState({});
+  const [responseData,setResponse] = useState('');
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [userData, setUserData] = useState({
     emailorusername: '',
