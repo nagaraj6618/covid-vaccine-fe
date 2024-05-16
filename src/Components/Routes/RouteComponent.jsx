@@ -8,6 +8,9 @@ import AboutComponent from '../About/AboutComponent'
 import RegisterComponent from '../LoginAndRegister/RegisterComponent'
 import LoginComponent from '../LoginAndRegister/LoginComponent'
 import OtpVerify from '../Auth/OtpVerify'
+import SingleCenterDisplayComponent from '../Centers/SingleCenterDisplayComponent'
+import AddNewCenter from '../Centers/AddNewCenter'
+import UpdateCenter from '../Centers/UpdateCenter'
 
 const RouteComponent = () => {
   return (
@@ -21,6 +24,9 @@ const RouteComponent = () => {
       <Route path='/auth/login' element={<LoginComponent/>} />
       <Route path='/auth/signup' element={<RegisterComponent/>} />
       <Route path='/auth/verify/otp/:id' element={<OtpVerify/>}/>
+      <Route path='/center/:id' element={<SingleCenterDisplayComponent/>}/>
+      <Route path='/center/update/:id' element={<UpdateCenter/>}/>
+      <Route path='/center/new' element={<AddNewCenter/>}/>
     </Routes>
   )
 }
