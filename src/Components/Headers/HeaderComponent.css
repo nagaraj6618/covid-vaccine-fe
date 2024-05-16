@@ -29,6 +29,7 @@
    justify-content: flex-start;
    padding: 20px;
    transition: 0.3s;
+   z-index: 1;
    animation: slideIn 0.5s forwards; 
 }
 

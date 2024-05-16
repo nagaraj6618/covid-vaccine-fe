@@ -4,6 +4,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   z-index: -1;
 }
 .loginregisterform-container{
    background-color: rgb(138, 43, 226,0.3);

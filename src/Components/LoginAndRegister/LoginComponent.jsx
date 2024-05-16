@@ -6,8 +6,10 @@ import { BE_URL } from '../../info';
 import axios from 'axios'
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import SuccessMessageComponent from '../SuccessMessage/SuccessMessageComponent';
+// import { useNavigate } from 'react-router-dom';
 
 const LoginComponent = () => {
+
   const [responseData,setResponse] = useState({});
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [userData, setUserData] = useState({
@@ -30,14 +32,19 @@ const LoginComponent = () => {
     try{
       const response = await axios.post(`${BE_URL}/auth/signin`,userData);
       console.log(response.data);
-      // setResponse('')
+  
       setResponse(response.data);
       sessionStorage.setItem('token',response.data.token);
       sessionStorage.setItem('timeIn',Date.now());
-      
+      sessionStorage.setItem('timeOut',Date.now()+(10*60*1000));
+
       localStorage.setItem('name',response.data.data.name);
       localStorage.setItem('userName',response.data.data.userName);
-      // console.log(responseData)
+
+      setTimeout(()=> {
+        window.location.href='/'
+      },1000)
+      
     }
     catch(error){
       console.log(error.response.data);
@@ -82,7 +89,7 @@ const LoginComponent = () => {
           
         </div>
         <div>
-          <button type='submit' className='btn btn-login'>Login</button>
+          <button type='submit' className='btn btn-login text-white'>Login</button>
         </div>
         <div className='text-black'>
           New User ? <Link to='/auth/signup' className='text-blue-500 transition hover:text-blue-700'>signup</Link>
