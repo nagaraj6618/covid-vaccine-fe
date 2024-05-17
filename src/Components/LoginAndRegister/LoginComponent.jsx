@@ -48,13 +48,24 @@ const LoginComponent = () => {
 
     }
     catch (error) {
-      console.log(error.response.data);
+      // console.log(error.response.data);
+      
       setLoading(true)
-      if (error.response) {
+      if(!error.response){
+        console.log(error)
+        setResponse({
+          message:'Check the Internet Connection',
+          success:false
+        })
+      }
+      
+      else if (error.response) {
+        
         setResponse(error.response.data);
         console.log(error.response.data);
 
       }
+      
     }
 
   }
