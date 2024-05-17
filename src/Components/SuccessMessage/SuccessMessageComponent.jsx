@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 
 const SuccessMessageComponent = (props) => {
 
-  const [success ,setSuccess] = useState(props.success);
-  useEffect(()=> {
-    setTimeout(()=> {
+  const [success, setSuccess] = useState(props.success);
+  useEffect(() => {
+    setTimeout(() => {
       setSuccess(false)
-    },2000)
+    }, 2000)
   })
   return (
     <div>{success && (
@@ -29,7 +29,7 @@ const SuccessMessageComponent = (props) => {
         </div>
       </div>
     )}
-</div>
+    </div>
   )
 }
 

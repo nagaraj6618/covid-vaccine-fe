@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes,Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import HomeComponent from '../Home/HomeComponent'
 import AppointmentComponent from '../Appointment/AppointmentComponent'
 import CenterComponent from '../Centers/CenterComponent'
@@ -17,19 +17,19 @@ const RouteComponent = () => {
   return (
     <Routes>
 
-      <Route path='/' element={<HomeComponent/>} />
-      <Route path='/appointment' element={<AppointmentComponent/>} />
-      <Route path='/center' element={<CenterComponent/>} />
-      <Route path='/account' element={<AccountComponent/>} />
-      <Route path='/about' element={<AboutComponent/>} />
-      <Route path='/auth/login' element={<LoginComponent/>} />
-      <Route path='/auth/signup' element={<RegisterComponent/>} />
-      <Route path='/auth/verify/otp/:id' element={<OtpVerify/>}/>
-      <Route path='/center/:id' element={<SingleCenterDisplayComponent/>}/>
-      <Route path='/center/update/:id' element={<UpdateCenter/>}/>
-      <Route path='/center/new' element={<AddNewCenter/>}/>
+      <Route path='/' element={<HomeComponent />} />
+      <Route path='/appointment' element={<AppointmentComponent />} />
+      <Route path='/center' element={<CenterComponent />} />
+      <Route path='/account' element={<AccountComponent />} />
+      <Route path='/about' element={<AboutComponent />} />
+      <Route path='/auth/login' element={<LoginComponent />} />
+      <Route path='/auth/signup' element={<RegisterComponent />} />
+      <Route path='/auth/verify/otp/:id' element={<OtpVerify />} />
+      <Route path='/center/:id' element={<SingleCenterDisplayComponent />} />
+      <Route path='/center/update/:id' element={<UpdateCenter />} />
+      <Route path='/center/new' element={<AddNewCenter />} />
 
-      <Route path='/auth/reset-password' element={<RestPassword/>}/>
+      <Route path='/auth/reset-password' element={<RestPassword />} />
     </Routes>
   )
 }

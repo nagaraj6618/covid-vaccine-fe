@@ -5,8 +5,8 @@ import SuccessMessageComponent from '../SuccessMessage/SuccessMessageComponent';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const AddNewCenter = () => {
-   const[loading,setLoading] = useState(false);
-   const [responseData,setResponseData] = useState('');
+   const [loading, setLoading] = useState(false);
+   const [responseData, setResponseData] = useState('');
    const [centerData, setCenterData] = useState({
       name: '',
       phone: '',
@@ -22,22 +22,22 @@ const AddNewCenter = () => {
       e.preventDefault();
       console.log(centerData);
       setLoading(true);
-      try{
+      try {
          const token = sessionStorage.getItem('token');
-         const response = await axios.post(`${BE_URL}/center`, centerData,{
+         const response = await axios.post(`${BE_URL}/center`, centerData, {
             headers: {
-              token: token
+               token: token
             }
-          });
-          
-          console.log(response.data);
-          setResponseData(response.data);
-          setLoading(false)
+         });
+
+         console.log(response.data);
+         setResponseData(response.data);
+         setLoading(false)
       }
-      catch(error){
+      catch (error) {
          console.log(error.response);
          setLoading(false)
-         if(error.response){
+         if (error.response) {
             setResponseData(error.response.data);
          }
       }
@@ -45,25 +45,25 @@ const AddNewCenter = () => {
    return (
       <div className="container mx-auto p-4">
 
-<div className='flex align-middle justify-center'>
-        {loading && (
-          <div className="flex items-center justify-center w-full h-40">
-            <svg className="animate-spin h-8 w-8 text-slate-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647zM20 12a8 8 0 01-8 8v4c6.627 0 12-5.373 12-12h-4zm-2-5.291c1.865 2.114 3 4.896 3 7.938h4c0-6.627-5.373-12-12-12v4z"></path>
-            </svg>
-            <span className="ml-2">Loading...</span>
-          </div>
-        )}
-      </div>
+         <div className='flex align-middle justify-center'>
+            {loading && (
+               <div className="flex items-center justify-center w-full h-40">
+                  <svg className="animate-spin h-8 w-8 text-slate-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647zM20 12a8 8 0 01-8 8v4c6.627 0 12-5.373 12-12h-4zm-2-5.291c1.865 2.114 3 4.896 3 7.938h4c0-6.627-5.373-12-12-12v4z"></path>
+                  </svg>
+                  <span className="ml-2">Loading...</span>
+               </div>
+            )}
+         </div>
          {responseData
-      &&
-      responseData.success 
-      && 
-      <SuccessMessageComponent success={responseData.success} message={responseData.message}/>
-      }
-     
-      {responseData &&responseData.success===false && <ErrorMessage error={responseData.message}/>}
+            &&
+            responseData.success
+            &&
+            <SuccessMessageComponent success={responseData.success} message={responseData.message} />
+         }
+
+         {responseData && responseData.success === false && <ErrorMessage error={responseData.message} />}
          <form onSubmit={formSubmitHandler} className="bg-white p-6 rounded-lg shadow-md space-y-4 max-w-lg mx-auto">
             <div>
                <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Center Name</label>

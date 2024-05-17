@@ -9,8 +9,8 @@ import SuccessMessageComponent from '../SuccessMessage/SuccessMessageComponent';
 // import { useNavigate } from 'react-router-dom';
 
 const LoginComponent = () => {
-  const [loading,setLoading] = useState(true)
-  const [responseData,setResponse] = useState('');
+  const [loading, setLoading] = useState(true)
+  const [responseData, setResponse] = useState('');
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [userData, setUserData] = useState({
     emailorusername: '',
@@ -21,36 +21,36 @@ const LoginComponent = () => {
     setResponse(null);
     setUserData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   }
-  
+
   const passwordToggle = () => {
     setIsShowPassword(!isShowPassword)
   }
 
-  const formSubmitHandler = async(e) => {
+  const formSubmitHandler = async (e) => {
     e.preventDefault();
     console.log(userData);
     setLoading(false);
-    try{
-      const response = await axios.post(`${BE_URL}/auth/signin`,userData);
+    try {
+      const response = await axios.post(`${BE_URL}/auth/signin`, userData);
       console.log(response.data);
       setLoading(true);
       setResponse(response.data);
-      sessionStorage.setItem('token',response.data.token);
-      sessionStorage.setItem('timeIn',Date.now());
-      sessionStorage.setItem('timeOut',Date.now()+(10*60*1000));
+      sessionStorage.setItem('token', response.data.token);
+      sessionStorage.setItem('timeIn', Date.now());
+      sessionStorage.setItem('timeOut', Date.now() + (10 * 60 * 1000));
 
-      localStorage.setItem('name',response.data.data.name);
-      localStorage.setItem('userName',response.data.data.userName);
-      localStorage.setItem('role',response.data.data.role);
-      setTimeout(()=> {
-        window.location.href='/'
-      },1000)
-      
+      localStorage.setItem('name', response.data.data.name);
+      localStorage.setItem('userName', response.data.data.userName);
+      localStorage.setItem('role', response.data.data.role);
+      setTimeout(() => {
+        window.location.href = '/'
+      }, 1000)
+
     }
-    catch(error){
+    catch (error) {
       console.log(error.response.data);
       setLoading(true)
-      if(error.response){
+      if (error.response) {
         setResponse(error.response.data);
         console.log(error.response.data);
 
@@ -60,14 +60,14 @@ const LoginComponent = () => {
   }
   return (
     <div className='loginregister-container'>
-      {responseData 
-      &&
-      responseData.success 
-      && 
-      <SuccessMessageComponent success={responseData.success} message={responseData.message}/>
+      {responseData
+        &&
+        responseData.success
+        &&
+        <SuccessMessageComponent success={responseData.success} message={responseData.message} />
       }
-     
-      {responseData &&responseData.success===false && <ErrorMessage error={responseData.message}/>}
+
+      {responseData && responseData.success === false && <ErrorMessage error={responseData.message} />}
 
       <div className='flex '>
         {!loading && (
@@ -92,14 +92,14 @@ const LoginComponent = () => {
           <div>
             <input id="password" type={isShowPassword ? 'text' : 'password'} required onChange={inputHandler} />
             {
-            isShowPassword ?
-              <AiOutlineEye className='text-black eye-option' onClick={passwordToggle} />
-              :
-              <AiOutlineEyeInvisible className='text-black eye-option' onClick={passwordToggle} />
+              isShowPassword ?
+                <AiOutlineEye className='text-black eye-option' onClick={passwordToggle} />
+                :
+                <AiOutlineEyeInvisible className='text-black eye-option' onClick={passwordToggle} />
             }
-          
+
           </div>
-          
+
         </div>
         <div>
           <button type='submit' className='btn btn-login text-white'>Login</button>

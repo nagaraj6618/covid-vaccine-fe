@@ -20,22 +20,22 @@ const CenterComponent = () => {
 
   }
 
-  const centerDeleteHandler = async(id) => {
+  const centerDeleteHandler = async (id) => {
     console.log(id)
-    try{
-      const response = await axios.delete(`${BE_URL}/center/${id}`,{
-        headers:{
-          token:sessionStorage.getItem('token')
+    try {
+      const response = await axios.delete(`${BE_URL}/center/${id}`, {
+        headers: {
+          token: sessionStorage.getItem('token')
         }
       })
       console.log(response.data);
       fetchAllCenter();
     }
-    catch(error){
+    catch (error) {
       console.log(error);
     }
 
-  } 
+  }
   useEffect(() => {
     fetchAllCenter();
     const userRole = localStorage.getItem('role');
@@ -86,13 +86,13 @@ const CenterComponent = () => {
                 <div className="md:col-span-2">
                   <p className="font-semibold text-white "> <Link to={`/center/${data._id}`} className='bg-violet-700 p-3 rounded'>Veiw Details </Link></p>
                 </div>
-                { isAdmin &&
+                {isAdmin &&
                   <div className="md:col-span-2 m-3">
-                    <p className="font-semibold text-white "> 
-                    <Link to={`/center/update/${data._id}`} className='text-violet-700 p-3 rounded'>Update </Link>
-                    <button className='btn' onClick={() => centerDeleteHandler(data._id)}>Delete</button>
+                    <p className="font-semibold text-white ">
+                      <Link to={`/center/update/${data._id}`} className='text-violet-700 p-3 rounded'>Update </Link>
+                      <button className='btn' onClick={() => centerDeleteHandler(data._id)}>Delete</button>
                     </p>
-                    
+
                   </div>
                 }
               </div>
@@ -100,16 +100,16 @@ const CenterComponent = () => {
           ))
         }
       </div>
-      { isAdmin &&
-                  <div className="flex justify-center items-center m-3">
-                  <div className="md:col-span-2 m-3">
-                    <p className="font-semibold text-white">
-                      <Link to={`/center/new`} className="bg-violet-700 p-3 rounded">Add new</Link>
-                    </p>
-                    
-                  </div>
-                </div>
-                }
+      {isAdmin &&
+        <div className="flex justify-center items-center m-3">
+          <div className="md:col-span-2 m-3">
+            <p className="font-semibold text-white">
+              <Link to={`/center/new`} className="bg-violet-700 p-3 rounded">Add new</Link>
+            </p>
+
+          </div>
+        </div>
+      }
 
     </div>
   )

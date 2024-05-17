@@ -9,7 +9,7 @@ import SuccessMessageComponent from '../SuccessMessage/SuccessMessageComponent';
 
 const RegisterComponent = () => {
   const navigate = useNavigate();
-  const [loading,setLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
   const [responseData, setResponse] = useState({});
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [userData, setUserData] = useState({
@@ -66,7 +66,7 @@ const RegisterComponent = () => {
   }
   return (
     <div className='loginregister-container'>
-      
+
       {responseData
         &&
         responseData.success

@@ -6,7 +6,7 @@ import { BE_URL } from '../../info';
 const SingleCenterDisplayComponent = () => {
    const { id } = useParams();
    console.log(id);
-   const[isAdmin,setIsAdmin] = useState(false);
+   const [isAdmin, setIsAdmin] = useState(false);
    const [centerData, setCenterData] = useState('');
    async function fetchSingleCenter() {
       try {
@@ -27,10 +27,10 @@ const SingleCenterDisplayComponent = () => {
       fetchSingleCenter();
       const userRole = localStorage.getItem('role');
       if (userRole === 'admin') {
-        setIsAdmin(true);
+         setIsAdmin(true);
       }
       else {
-        setIsAdmin(false);
+         setIsAdmin(false);
       }
    }, [])
    return (
@@ -75,15 +75,15 @@ const SingleCenterDisplayComponent = () => {
                         <div className="md:col-span-2">
                            <p className="font-semibold text-violet-700">Total Dosage: <span className="text-gray-900">{centerData.data.dosageCount}</span></p>
                         </div>
+                     </div>
+
+                     {isAdmin &&
+                        <div className="md:col-span-2 m-3">
+                           <p className="font-semibold text-white "> <Link to={`/center/update/${centerData.data._id}`} className='bg-violet-700 p-3 rounded'>Update </Link></p>
                         </div>
-                        
-                { isAdmin &&
-                  <div className="md:col-span-2 m-3">
-                    <p className="font-semibold text-white "> <Link to={`/center/update/${centerData.data._id}`} className='bg-violet-700 p-3 rounded'>Update </Link></p>
+                     }
                   </div>
-                }
-              </div>
-                     // </div>
+                  // </div>
                   // </div>
                )
             }
@@ -125,7 +125,7 @@ const SingleCenterDisplayComponent = () => {
                </ul>
             </div>
          </div>
-            
+
       </div>
    )
 }

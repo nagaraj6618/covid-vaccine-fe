@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BE_URL } from '../../info'
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const AccountComponent = () => {
@@ -71,38 +71,38 @@ const AccountComponent = () => {
         userData && userData.success === true &&
 
         <div className="container mx-auto p-4">
-  <div className="bg-white shadow-lg rounded-lg p-8">
-    <div className="mb-4">
-      <span className="font-semibold text-violet-700">Username:</span>
-      <span className="text-gray-900 ml-2 font-semibold">{userData.data.userName}</span>
-    </div>
-    <div className="mb-4">
-      <span className="font-semibold text-violet-700">Name:</span>
-      <span className="text-gray-900 ml-2">{userData.data.name}</span>
-    </div>
-    <div className="mb-4">
-      <span className="font-semibold text-violet-700">Email:</span>
-      <span className="text-gray-900 ml-2">{userData.data.email}</span>
-    </div>
-    <div className="mb-4">
-      <span className="font-semibold text-violet-700">Verified status:</span>
-      <span className={`ml-2 ${userData.data.verified ? 'text-green-600' : 'text-red-600'}`}>
-        {userData.data.verified ? 'Yes' : 'No'}
-      </span>
-    </div>
-    <div className="mb-4">
-      <span className="font-semibold text-violet-700">Role:</span>
-      <span className="text-gray-900 ml-2">{userData.data.role}</span>
-    </div>
-    <div>
-      <span className="font-semibold text-violet-700">Created At:</span>
-      <span className="text-gray-900 ml-2">{new Date(userData.data.createdAt).toDateString()}</span>
-    </div>
-  </div>
+          <div className="bg-white shadow-lg rounded-lg p-8">
+            <div className="mb-4">
+              <span className="font-semibold text-violet-700">Username:</span>
+              <span className="text-gray-900 ml-2 font-semibold">{userData.data.userName}</span>
+            </div>
+            <div className="mb-4">
+              <span className="font-semibold text-violet-700">Name:</span>
+              <span className="text-gray-900 ml-2">{userData.data.name}</span>
+            </div>
+            <div className="mb-4">
+              <span className="font-semibold text-violet-700">Email:</span>
+              <span className="text-gray-900 ml-2">{userData.data.email}</span>
+            </div>
+            <div className="mb-4">
+              <span className="font-semibold text-violet-700">Verified status:</span>
+              <span className={`ml-2 ${userData.data.verified ? 'text-green-600' : 'text-red-600'}`}>
+                {userData.data.verified ? 'Yes' : 'No'}
+              </span>
+            </div>
+            <div className="mb-4">
+              <span className="font-semibold text-violet-700">Role:</span>
+              <span className="text-gray-900 ml-2">{userData.data.role}</span>
+            </div>
+            <div>
+              <span className="font-semibold text-violet-700">Created At:</span>
+              <span className="text-gray-900 ml-2">{new Date(userData.data.createdAt).toDateString()}</span>
+            </div>
+          </div>
 
-  <button className='btn btn-login text-white mt-5 ml-10' onClick={()=>logoutHandler()}>LogOut</button>
-    <Link to='/auth/reset-password' className='btn m-5 text-white'>Reset Password</Link>
-</div>
+          <button className='btn btn-login text-white mt-5 ml-10' onClick={() => logoutHandler()}>LogOut</button>
+          <Link to='/auth/reset-password' className='btn m-5 text-white'>Reset Password</Link>
+        </div>
 
 
 

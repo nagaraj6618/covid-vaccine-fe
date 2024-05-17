@@ -6,7 +6,7 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import SuccessMessageComponent from '../SuccessMessage/SuccessMessageComponent';
 const OtpVerify = () => {
    const navigate = useNavigate();
-   const [responseData,setResponse] = useState({});
+   const [responseData, setResponse] = useState({});
    const { id } = useParams();
    const [otp, setOtp] = useState('');
    const handleChange = (e) => {
@@ -20,21 +20,21 @@ const OtpVerify = () => {
       e.preventDefault();
       console.log(otp)
       try {
-         const response = await axios.post(`${BE_URL}/auth/otp-verify/${id}`, {otp});
+         const response = await axios.post(`${BE_URL}/auth/otp-verify/${id}`, { otp });
          console.log(response.data);
          setResponse(response.data);
-         setTimeout(()=> {
+         setTimeout(() => {
             navigate('/auth/login')
-         },1500);
+         }, 1500);
       }
       catch (error) {
          console.log(error.response.data);
-      
-      if(error.response){
-        setResponse(error.response.data);
-        console.log(error.response.data);
 
-      }
+         if (error.response) {
+            setResponse(error.response.data);
+            console.log(error.response.data);
+
+         }
       }
    }
    return (
