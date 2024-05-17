@@ -61,7 +61,13 @@ const SingleCenterDisplayComponent = () => {
                            <p className="font-semibold text-violet-700">Contact Ph: <span className="text-gray-900">{centerData.data.phone}</span></p>
                         </div>
                         <div>
-                           <p className="font-semibold text-violet-700">Address: <span className="text-gray-900">{centerData.data.address}</span></p>
+                           <p className="font-semibold text-violet-700">Address: <span className="text-gray-900">{centerData.data.address.place}</span></p>
+                        </div>
+                        <div>
+                           <p className="font-semibold text-violet-700">Pincode & City: <span className="text-gray-900">{`${centerData.data.address.pincode},${centerData.data.address.city}`}</span></p>
+                        </div>
+                        <div>
+                           <p className="font-semibold text-violet-700">State: <span className="text-gray-900">{centerData.data.address.state}</span></p>
                         </div>
                         <div>
                            <p className="font-semibold text-violet-700">Total Visited: <span className="text-gray-900">{centerData.data.visited ? centerData.data.visited : 'nill'}</span></p>
@@ -74,6 +80,9 @@ const SingleCenterDisplayComponent = () => {
                         </div>
                         <div className="md:col-span-2">
                            <p className="font-semibold text-violet-700">Total Dosage: <span className="text-gray-900">{centerData.data.dosageCount}</span></p>
+                        </div>
+                        <div>
+                           <p className="font-semibold text-violet-700">Active Status: <span className="text-gray-900 font-bold ">{centerData.data.active}</span></p>
                         </div>
                      </div>
 

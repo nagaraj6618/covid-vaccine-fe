@@ -12,12 +12,43 @@ const AddNewCenter = () => {
       phone: '',
       email: '',
       address: '',
-      dosageCount: ''
+      pincode: '',
+      city: '',
+      state: '',
+      dosageCount: '',
+      status: true,
    });
+
    const inputHandler = (e) => {
-      setCenterData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-      setResponseData('')
+      const { id, value } = e.target;
+      setCenterData((prev) => ({ ...prev, [id]: value }));
+      setResponseData('');
+
+      if (id === 'pincode' && value.length === 6) {
+         fetchAddressDetails(value);
+      }
    }
+
+   const fetchAddressDetails = async (pincode) => {
+      try {
+         const response = await axios.get(`https://api.postalpincode.in/pincode/${pincode}`);
+         const data = response.data[0];
+         if (data.Status === 'Success') {
+            const addressData = data.PostOffice[0];
+            setCenterData((prev) => ({
+               ...prev,
+               address: addressData.Name,
+               city: addressData.District,
+               state: addressData.State
+            }));
+         } else {
+            setResponseData({ success: false, message: 'Invalid Pincode' });
+         }
+      } catch (error) {
+         setResponseData({ success: false, message: 'Error fetching address details' });
+      }
+   }
+
    const formSubmitHandler = async (e) => {
       e.preventDefault();
       console.log(centerData);
@@ -42,9 +73,9 @@ const AddNewCenter = () => {
          }
       }
    }
+
    return (
       <div className="container mx-auto p-4">
-
          <div className='flex align-middle justify-center'>
             {loading && (
                <div className="flex items-center justify-center w-full h-40">
@@ -107,9 +138,54 @@ const AddNewCenter = () => {
                   id="address"
                   type="text"
                   onChange={inputHandler}
+
                   required
                   className="w-full p-2 border border-gray-300 rounded"
                />
+            </div>
+            <div>
+               <label htmlFor="pincode" className="block text-gray-700 font-semibold mb-2">Pincode</label>
+               <input
+                  id="pincode"
+                  type="text"
+                  onChange={inputHandler}
+                  value={centerData.pincode}
+                  required
+                  pattern="\d{6}"
+                  title="Pincode should be 6 digits."
+                  className="w-full p-2 border border-gray-300 rounded"
+               />
+            </div>
+            <div>
+               <label htmlFor="city" className="block text-gray-700 font-semibold mb-2">City</label>
+               <input
+                  id="city"
+                  type="text"
+                  onChange={inputHandler}
+                  value={centerData.city}
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
+               />
+            </div>
+            <div>
+               <label htmlFor="state" className="block text-gray-700 font-semibold mb-2">State</label>
+               <input
+                  id="state"
+                  type="text"
+                  onChange={inputHandler}
+                  value={centerData.state}
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
+               />
+            </div>
+            <div>
+               <label htmlFor="status" className="block text-gray-700 font-semibold mb-2">Active Status</label>
+               <select onChange={inputHandler} className="border-2 border-black p-2 rounded-lg text-lg text-gray-800 bg-white focus:border-blue-500 transition duration-300" id="status">
+                  <option value={true}>Choose</option>
+                  <option value={true}>True</option>
+                  <option value={false}>False</option>
+
+               </select>
             </div>
             <div>
                <label htmlFor="dosageCount" className="block text-gray-700 font-semibold mb-2">Dosage Count</label>
@@ -128,8 +204,6 @@ const AddNewCenter = () => {
             </div>
          </form>
       </div>
-
-
    )
 }
 

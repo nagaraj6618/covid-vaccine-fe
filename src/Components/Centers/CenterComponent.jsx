@@ -77,11 +77,19 @@ const CenterComponent = () => {
                   <p className="font-semibold text-violet-700">Contact Ph: <span className="text-gray-900">{data.phone}</span></p>
                 </div>
                 <div>
-                  <p className="font-semibold text-violet-700">Address: <span className="text-gray-900">{data.address}</span></p>
+                  <p className="font-semibold text-violet-700">Address: <span className="text-gray-900">{data.address.place}</span></p>
                 </div>
-
+                <div>
+                  <p className="font-semibold text-violet-700">Pincode & City: <span className="text-gray-900">{`${data.address.pincode},${data.address.city}`}</span></p>
+                </div>
+                <div>
+                  <p className="font-semibold text-violet-700">State: <span className="text-gray-900">{data.address.state}</span></p>
+                </div>
                 <div className="md:col-span-2">
                   <p className="font-semibold text-violet-700">Opening Hours: <span className="text-gray-900">{data.openingHours}</span></p>
+                </div>
+                <div>
+                  <p className="font-semibold text-violet-700">Active Status: <span className="text-gray-900 font-bold ">{data.status?'Active':'Inactive'}</span></p>
                 </div>
                 <div className="md:col-span-2">
                   <p className="font-semibold text-white "> <Link to={`/center/${data._id}`} className='bg-violet-700 p-3 rounded'>Veiw Details </Link></p>

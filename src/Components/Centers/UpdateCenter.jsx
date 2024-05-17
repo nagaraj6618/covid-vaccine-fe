@@ -14,7 +14,11 @@ const UpdateCenter = () => {
       phone: '',
       email: '',
       address: '',
-      dosageCount: ''
+      dosageCount: '',
+      pincode: '',
+      city: '',
+      state: '',
+      status: true
    });
    const { id } = useParams();
    async function fetchCenterData() {
@@ -25,7 +29,18 @@ const UpdateCenter = () => {
             }
          })
          console.log(response.data);
-         setCenterData(response.data.data)
+         const centerResponseData = response.data.data;
+         console.log(centerResponseData.address.place);
+         setCenterData({
+            name: centerResponseData.name,
+            phone: centerResponseData.phone,
+            email: centerResponseData.email,
+            address: centerResponseData.address.place,
+            dosageCount: centerResponseData.dosageCount,
+            pincode: centerResponseData.address.pincode,
+            city: centerResponseData.address.city,
+            state: centerResponseData.address.state,
+         })
       }
       catch (error) {
          console.log(error.response);
@@ -42,9 +57,23 @@ const UpdateCenter = () => {
       e.preventDefault();
       console.log(centerData);
       setLoading(true);
+      const centerFormData = {
+         name: centerData.name,
+         phone: centerData.phone,
+         email: centerData.email,
+         address: {
+            place: centerData.address,
+            city: centerData.city,
+            pincode: centerData.pincode,
+            state: centerData.state,
+         },
+         dosageCount: centerData.dosageCount,
+         status: centerData.status,
+
+      }
       try {
          const token = sessionStorage.getItem('token');
-         const response = await axios.put(`${BE_URL}/center/${id}`, centerData, {
+         const response = await axios.put(`${BE_URL}/center/${id}`, centerFormData, {
             headers: {
                token: token
             }
@@ -137,6 +166,50 @@ const UpdateCenter = () => {
                />
             </div>
             <div>
+               <label htmlFor="pincode" className="block text-gray-700 font-semibold mb-2">Pincode</label>
+               <input
+                  id="pincode"
+                  type="text"
+                  onChange={inputHandler}
+                  value={centerData.pincode}
+                  required
+                  pattern="\d{6}"
+                  title="Pincode should be 6 digits."
+                  className="w-full p-2 border border-gray-300 rounded"
+               />
+            </div>
+            <div>
+               <label htmlFor="city" className="block text-gray-700 font-semibold mb-2">City</label>
+               <input
+                  id="city"
+                  type="text"
+                  onChange={inputHandler}
+                  value={centerData.city}
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
+               />
+            </div>
+            <div>
+               <label htmlFor="state" className="block text-gray-700 font-semibold mb-2">State</label>
+               <input
+                  id="state"
+                  type="text"
+                  onChange={inputHandler}
+                  value={centerData.state}
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
+               />
+            </div>
+            <div>
+               <label htmlFor="status" className="block text-gray-700 font-semibold mb-2">Active Status</label>
+               <select onChange={inputHandler} className="border-2 border-black p-2 rounded-lg text-lg text-gray-800 bg-white focus:border-blue-500 transition duration-300" id="status">
+                  <option value={true}>Choose</option>
+                  <option value={true}>True</option>
+                  <option value={false}>False</option>
+
+               </select>
+            </div>
+            <div>
                <label htmlFor="dosageCount" className="block text-gray-700 font-semibold mb-2">Dosage Count</label>
                <input
                   id="dosageCount"
@@ -149,6 +222,7 @@ const UpdateCenter = () => {
                   value={centerData.dosageCount}
                />
             </div>
+
             <div>
                <button className="bg-violet-700 text-white rounded p-3 w-full hover:bg-violet-800 transition duration-300" type="submit">Update</button>
             </div>
