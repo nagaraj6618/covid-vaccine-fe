@@ -72,7 +72,7 @@ const HomeComponent = () => {
       </div>
 
       <div className="container mx-auto p-4">
-        <div className="flex justify-end mb-4">
+        <div className="flex justify-start mb-4">
           <input
             type="text"
             placeholder="Filter by name, email, or phone"
