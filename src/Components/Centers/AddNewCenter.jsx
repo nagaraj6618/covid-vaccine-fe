@@ -104,7 +104,7 @@ const AddNewCenter = () => {
                   type="text"
                   onChange={inputHandler}
                   required
-                  pattern="[A-Za-z\s]+"
+                
                   title="Center Name should only contain letters and spaces."
                   className="w-full p-2 border border-gray-300 rounded"
                />
