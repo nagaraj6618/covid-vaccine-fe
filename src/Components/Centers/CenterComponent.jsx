@@ -23,9 +23,11 @@ const CenterComponent = () => {
   const centerDeleteHandler = async (id) => {
     console.log(id)
     try {
+      const token = sessionStorage.getItem('token');
       const response = await axios.delete(`${BE_URL}/center/${id}`, {
         headers: {
-          token: sessionStorage.getItem('token')
+          token: token,
+          Authorization:`Bearer ${token}`
         }
       })
       console.log(response.data);

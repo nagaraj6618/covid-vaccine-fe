@@ -75,7 +75,8 @@ const UpdateCenter = () => {
          const token = sessionStorage.getItem('token');
          const response = await axios.put(`${BE_URL}/center/${id}`, centerFormData, {
             headers: {
-               token: token
+               token: token,
+               Authorization:`Bearer ${token}`
             }
          });
 

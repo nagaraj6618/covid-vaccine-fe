@@ -57,7 +57,8 @@ const AddNewCenter = () => {
          const token = sessionStorage.getItem('token');
          const response = await axios.post(`${BE_URL}/center`, centerData, {
             headers: {
-               token: token
+               token: token,
+               Authorization:`Bearer ${token}`
             }
          });
 
