@@ -23,9 +23,11 @@ const RestPassword = () => {
 
 
          if (userData.confrimnewpassword === userData.newpassword) {
+            const token = sessionStorage.getItem('token')
             const response = await axios.post(`${BE_URL}/auth/reset-password`, userData, {
                headers: {
-                  token: sessionStorage.getItem('token')
+                  token: token,
+                  Authorization:`Bearer ${token}`
                }
             })
             console.log(response.data);

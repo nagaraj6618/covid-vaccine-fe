@@ -12,7 +12,8 @@ const AccountComponent = () => {
     try {
       const response = await axios.get(`${BE_URL}/auth`, {
         headers: {
-          token: token
+          token: token,
+          Authorization:`Bearer ${token}`
         }
       });
       console.log(response.data);
