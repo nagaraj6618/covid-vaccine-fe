@@ -7,10 +7,22 @@ const CenterComponent = () => {
   const [centerData, setCenterData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [filter, setFilter] = useState('');
+  const [activeFilter,setActiveFilter] = useState("None");
 
-  async function fetchAllCenter() {
+  const activeInputHandler = (e) => {
+    setActiveFilter(e.target.value);
+    if(e.target.value === "None" ){
+      fetchAllCenter(undefined);
+    }
+    else{
+      fetchAllCenter(e.target.value);
+    }
+    
+  }
+  async function fetchAllCenter(active) {
     try {
-      const response = await axios.get(`${BE_URL}/center`);
+      console.log(active);
+      const response = await axios.get(`${BE_URL}/center?active=${active}`);
       console.log(response.data);
       setCenterData(response.data.data);
       setFilteredData(response.data.data); // Initialize filteredData with the full data set
@@ -70,7 +82,9 @@ const CenterComponent = () => {
         )}
       </div>
 
-      <div className="container mx-auto p-4">
+     <div className="container mx-auto p-4">
+      { 
+        centerData.length>0 && (
         <div className="flex justify-end mb-4">
           <input
             type="text"
@@ -79,7 +93,16 @@ const CenterComponent = () => {
             onChange={(e) => setFilter(e.target.value)}
             className="border p-2 rounded"
           />
-        </div>
+          <select
+          className="border p-2 rounded ml-2"
+          onChange={activeInputHandler}
+          value={activeFilter}
+          >
+            <option value={undefined}>None</option>
+            <option value={true}>Active</option>
+            <option value={false}>Inactive</option>
+          </select>
+        </div>)}
 
         {filteredData.map((data, index) => (
           <div className="center-container bg-white shadow-lg rounded-lg p-6 mb-6" key={index}>
