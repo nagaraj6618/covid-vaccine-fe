@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const AboutComponent = () => {
   return (
     <div className="bg-gray-100 py-12">
@@ -72,6 +72,10 @@ const AboutComponent = () => {
               </dd>
             </div>
           </dl>
+        </div>
+        <div>
+        Click here to 
+          <Link to='/instruction' className='b-2 text-blue-500'> Instruction</Link>
         </div>
       </div>
     </div>

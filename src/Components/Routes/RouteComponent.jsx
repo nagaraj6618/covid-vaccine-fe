@@ -12,6 +12,7 @@ import SingleCenterDisplayComponent from '../Centers/SingleCenterDisplayComponen
 import AddNewCenter from '../Centers/AddNewCenter'
 import UpdateCenter from '../Centers/UpdateCenter'
 import RestPassword from '../Auth/RestPassword'
+import IntrusctionComponent from '../About/IntrusctionComponent'
 
 const RouteComponent = () => {
   return (
@@ -28,6 +29,7 @@ const RouteComponent = () => {
       <Route path='/center/:id' element={<SingleCenterDisplayComponent />} />
       <Route path='/center/update/:id' element={<UpdateCenter />} />
       <Route path='/center/new' element={<AddNewCenter />} />
+      <Route path='/instruction' element={<IntrusctionComponent/>}/>
 
       <Route path='/auth/reset-password' element={<RestPassword />} />
     </Routes>
