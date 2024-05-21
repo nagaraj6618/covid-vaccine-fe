@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { BE_URL } from '../../info'
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { useNavigate, Link } from 'react-router-dom';
+import LoadingComponent from '../LoadingComponent/LoadingComponent';
 
 
 const AccountComponent = () => {
@@ -53,7 +54,7 @@ const AccountComponent = () => {
     <div className='account-container'>
 
       <div className='flex align-middle justify-center'>
-        {!userData && (
+        {/* {!userData && (
           <div className="flex items-center justify-center w-full h-40">
             <svg className="animate-spin h-8 w-8 text-slate-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -61,7 +62,8 @@ const AccountComponent = () => {
             </svg>
             <span className="ml-2">Loading...</span>
           </div>
-        )}
+        )} */}
+        {!userData && <LoadingComponent/>}
       </div>
       {/* <h1 className='text-black'> {userData.message}</h1> */}
       {userData && userData.success === false && <ErrorMessage error={userData.message} />}

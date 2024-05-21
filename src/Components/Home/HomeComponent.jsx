@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BE_URL } from '../../info';
 import { Link } from 'react-router-dom';
+import LoadingComponent from '../LoadingComponent/LoadingComponent';
 
 const HomeComponent = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -73,7 +74,7 @@ const HomeComponent = () => {
   return (
     <div className='center-main-container'>
       <div className='flex align-middle justify-center'>
-        {!centerData.length && (
+        {/* {!centerData.length && (
           <div className="flex items-center justify-center w-full h-40">
             <svg className="animate-spin h-8 w-8 text-slate-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -81,7 +82,8 @@ const HomeComponent = () => {
             </svg>
             <span className="ml-2">Loading...</span>
           </div>
-        )}
+        )} */}
+        {!centerData.length && <LoadingComponent/>}
       </div>
 
       <div className="container mx-auto p-4">

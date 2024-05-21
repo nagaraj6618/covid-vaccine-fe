@@ -2,13 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BE_URL } from '../../info';
 import { Link } from 'react-router-dom';
+import LoadingComponent from '../LoadingComponent/LoadingComponent';
 const CenterComponent = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [centerData, setCenterData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [filter, setFilter] = useState('');
   const [activeFilter,setActiveFilter] = useState("None");
-
+  const [loading,setLoading] = useState(false);
   const activeInputHandler = (e) => {
     setActiveFilter(e.target.value);
     if(e.target.value === "None" ){
@@ -21,13 +22,17 @@ const CenterComponent = () => {
   }
   async function fetchAllCenter(active) {
     try {
+      setLoading(true);
       console.log(active);
       const response = await axios.get(`${BE_URL}/center?active=${active}`);
       console.log(response.data);
       setCenterData(response.data.data);
-      setFilteredData(response.data.data); // Initialize filteredData with the full data set
+      setFilteredData(response.data.data);
+      setLoading(false);
+      // Initialize filteredData with the full data set
     } catch (error) {
       console.log(error.response.data);
+      setLoading(false);
       if (error.response) {
         setCenterData([]);
         setFilteredData([]);
@@ -74,7 +79,7 @@ const CenterComponent = () => {
   return (
     <div className='center-main-container'>
       <div className='flex align-middle justify-center'>
-        {!centerData.length && (
+        {/* {!centerData.length && (
           <div className="flex items-center justify-center w-full h-40">
             <svg className="animate-spin h-8 w-8 text-slate-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -82,7 +87,8 @@ const CenterComponent = () => {
             </svg>
             <span className="ml-2">Loading...</span>
           </div>
-        )}
+        )} */}
+        {loading && <LoadingComponent/>}
       </div>
 
      <div className="container mx-auto p-4">

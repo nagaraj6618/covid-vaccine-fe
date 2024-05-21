@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { BE_URL } from '../../info';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { Link } from 'react-router-dom';
+import LoadingComponent from '../LoadingComponent/LoadingComponent';
 
 const AppointmentComponent = () => {
   const [responseData, setResponseData] = useState([]);
@@ -74,7 +75,7 @@ const AppointmentComponent = () => {
         </div>
       </div>
       <div className='flex justify-center'>
-        {loading && (
+        {/* {loading && (
           <div className="flex items-center justify-center w-full h-40">
             <svg className="animate-spin h-8 w-8 text-slate-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -82,7 +83,8 @@ const AppointmentComponent = () => {
             </svg>
             <span className="ml-2">Loading...</span>
           </div>
-        )}
+        )} */}
+        {loading && <LoadingComponent/>}
       </div>
       {responseData && responseData.success === false && <ErrorMessage error={responseData.message} />}
 

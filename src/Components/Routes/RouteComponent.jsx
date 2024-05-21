@@ -15,6 +15,7 @@ import RestPassword from '../Auth/RestPassword'
 import IntrusctionComponent from '../About/IntrusctionComponent'
 import NotFoundRoute from '../NotFoundRoute/NotFoundRoute'
 import NewAppointmentBooking from '../Appointment/NewAppointmentBooking'
+import PatientComponent from '../PatientComponent/PatientComponent'
 
 const RouteComponent = () => {
   return (
@@ -33,7 +34,7 @@ const RouteComponent = () => {
       <Route path='/center/update/:id' element={<UpdateCenter />} />
       <Route path='/center/new' element={<AddNewCenter />} />
       <Route path='/instruction' element={<IntrusctionComponent/>}/>
-
+      <Route path='/patient/:id' element={<PatientComponent/>}/>
       <Route path='/auth/reset-password' element={<RestPassword />} />
       <Route path='*' element={<NotFoundRoute />} />
     </Routes>
