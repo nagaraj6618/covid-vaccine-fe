@@ -35,7 +35,7 @@ const RouteComponent = () => {
       <Route path='/instruction' element={<IntrusctionComponent/>}/>
 
       <Route path='/auth/reset-password' element={<RestPassword />} />
-      <Route path='/:no-route' element={<NotFoundRoute />} />
+      <Route path='*' element={<NotFoundRoute />} />
     </Routes>
   )
 }
