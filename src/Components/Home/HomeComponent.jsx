@@ -62,7 +62,10 @@ const HomeComponent = () => {
     const filtered = centerData.filter(center =>
       center.name.toLowerCase().includes(filter.toLowerCase()) ||
       center.email.toLowerCase().includes(filter.toLowerCase()) ||
-      center.phone.toLowerCase().includes(filter.toLowerCase())
+      center.phone.toLowerCase().includes(filter.toLowerCase()) ||
+      center.address.place.toLowerCase().includes(filter.toLowerCase())||
+      center.address.pincode.toLowerCase().includes(filter.toLowerCase())||
+      center.address.city.toLowerCase().includes(filter.toLowerCase())
     );
     setFilteredData(filtered);
   }, [filter, centerData]);
