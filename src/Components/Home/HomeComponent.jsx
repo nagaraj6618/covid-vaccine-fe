@@ -58,7 +58,7 @@ const HomeComponent = () => {
   }, []);
 
   useEffect(() => {
-    // Apply filter whenever the filter state or centerData changes
+    
     const filtered = centerData.filter(center =>
       center.name.toLowerCase().includes(filter.toLowerCase()) ||
       center.email.toLowerCase().includes(filter.toLowerCase()) ||
