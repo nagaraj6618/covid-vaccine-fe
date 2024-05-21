@@ -13,6 +13,7 @@ import AddNewCenter from '../Centers/AddNewCenter'
 import UpdateCenter from '../Centers/UpdateCenter'
 import RestPassword from '../Auth/RestPassword'
 import IntrusctionComponent from '../About/IntrusctionComponent'
+import NotFoundRoute from '../NotFoundRoute/NotFoundRoute'
 
 const RouteComponent = () => {
   return (
@@ -32,6 +33,7 @@ const RouteComponent = () => {
       <Route path='/instruction' element={<IntrusctionComponent/>}/>
 
       <Route path='/auth/reset-password' element={<RestPassword />} />
+      <Route path='/:no-route' element={<NotFoundRoute />} />
     </Routes>
   )
 }
