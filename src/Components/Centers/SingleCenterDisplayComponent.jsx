@@ -48,7 +48,7 @@ const SingleCenterDisplayComponent = () => {
          </div>
          <div>
             {
-               centerData && (
+               centerData && centerData.success === true && (
                   <div className="center-container bg-white shadow-lg rounded-lg p-6 mb-6">
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>

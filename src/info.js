@@ -21,5 +21,5 @@ export const navRoute = [
    },
 ];
 
-// export const BE_URL = 'http://localhost:8000/api/v1';
-export const BE_URL = 'https://covid-vaccine-be.vercel.app/api/v1';
+export const BE_URL = 'http://localhost:8000/api/v1';
+// export const BE_URL = 'https://covid-vaccine-be.vercel.app/api/v1';
