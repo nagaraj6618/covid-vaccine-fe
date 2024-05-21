@@ -97,7 +97,7 @@ const HomeComponent = () => {
           onChange={activeInputHandler}
           value={activeFilter}
           >
-            <option value={undefined}>None</option>
+            <option value={undefined}>All</option>
             <option value={true}>Active</option>
             <option value={false}>Inactive</option>
           </select>
