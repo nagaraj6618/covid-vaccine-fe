@@ -181,7 +181,7 @@ const AddNewCenter = () => {
             </div>
             <div>
                <label htmlFor="status" className="block text-gray-700 font-semibold mb-2">Active Status</label>
-               <select onChange={inputHandler} className="border-2 border-black p-2 rounded-lg text-lg text-gray-800 bg-white focus:border-blue-500 transition duration-300" id="status">
+               <select onChange={inputHandler} className="text-lg text-gray-800 bg-white focus:border-blue-500 transition duration-300 w-full p-2 border border-gray-300 rounded" id="status">
                   <option value={true}>Choose</option>
                   <option value={true}>True</option>
                   <option value={false}>False</option>

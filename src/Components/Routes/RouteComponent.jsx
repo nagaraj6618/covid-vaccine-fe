@@ -14,6 +14,7 @@ import UpdateCenter from '../Centers/UpdateCenter'
 import RestPassword from '../Auth/RestPassword'
 import IntrusctionComponent from '../About/IntrusctionComponent'
 import NotFoundRoute from '../NotFoundRoute/NotFoundRoute'
+import NewAppointmentBooking from '../Appointment/NewAppointmentBooking'
 
 const RouteComponent = () => {
   return (
@@ -28,6 +29,7 @@ const RouteComponent = () => {
       <Route path='/auth/signup' element={<RegisterComponent />} />
       <Route path='/auth/verify/otp/:id' element={<OtpVerify />} />
       <Route path='/center/:id' element={<SingleCenterDisplayComponent />} />
+      <Route path='/center/book/:id' element={<NewAppointmentBooking />} />
       <Route path='/center/update/:id' element={<UpdateCenter />} />
       <Route path='/center/new' element={<AddNewCenter />} />
       <Route path='/instruction' element={<IntrusctionComponent/>}/>

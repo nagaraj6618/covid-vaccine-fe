@@ -82,7 +82,10 @@ const SingleCenterDisplayComponent = () => {
                            <p className="font-semibold text-violet-700">Total Dosage: <span className="text-gray-900">{centerData.data.dosageCount}</span></p>
                         </div>
                         <div>
-                           <p className="font-semibold text-violet-700">Active Status: <span className="text-gray-900 font-bold ">{centerData.data.active}</span></p>
+                           <p className="font-semibold text-violet-700">Active Status: <span className="text-gray-900 font-bold ">{centerData.data.status?'Active':'Inactive'}</span></p>
+                        </div>
+                        <div className='mb-10'>
+                           <Link className='btn text-white' to={`/center/book/${centerData.data._id}`}>Book Appointment</Link>
                         </div>
                      </div>
 

@@ -1,16 +1,31 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+
 
 
 const AppointmentComponent = () => {
+
+  const [formData,setFormdata] = useState({
+    patientName:'',
+    email:'',
+    phone:'',
+    dob:'',
+    gender:'',
+    aadharNumber:'',
+    appointmentDate:''
+  })
   return (
     <div>
-      <div className='text-violet-700 flex justify-center'>
-        <div>
-          <Link to='' >New Booking</Link>
-        </div>
-
+      <div>
+        <h1>New Appointment Booking</h1>
       </div>
+
+      <form>
+          <div>
+            <label htmlFor='patientName'>
+              Patient Name
+            </label>
+          </div>
+      </form>
     </div>
   )
 }
