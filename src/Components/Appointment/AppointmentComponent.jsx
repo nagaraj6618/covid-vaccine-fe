@@ -62,6 +62,16 @@ const AppointmentComponent = () => {
             </select>
           </div>
           <div>
+            <label htmlFor="search" className="block text-sm font-medium text-gray-700">
+              Search
+            </label>
+            <input
+              type="text"
+              id="serach"
+              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            />
+          </div>
+          <div>
             <label htmlFor="date" className="block text-sm font-medium text-gray-700">
               Filter by Date:
             </label>
@@ -84,7 +94,7 @@ const AppointmentComponent = () => {
             <span className="ml-2">Loading...</span>
           </div>
         )} */}
-        {loading && <LoadingComponent/>}
+        {loading && <LoadingComponent />}
       </div>
       {responseData && responseData.success === false && <ErrorMessage error={responseData.message} />}
 
@@ -113,7 +123,30 @@ const AppointmentComponent = () => {
               <p className="text-lg font-semibold">
                 Status: <span className="font-normal">{data.status}</span>
               </p>
+
             </div>
+            {
+              data.patientDetails
+              &&
+              (<div>
+                <div className="mb-2 ">
+
+                  <p className="text-lg font-semibold">
+                    Patient Name: <span className="font-normal">{data.patientDetails.patientDetails.name}</span>
+                  </p>
+                </div>
+                <div className="mb-2 ">
+                  <p className="text-lg font-semibold">
+                    Aadhar Number: <span className="font-normal">{data.patientDetails.patientDetails.aadharNumber}</span>
+                  </p>
+                </div>
+              </div>
+              )
+
+
+            }
+
+
             <div>
               <Link to={`/patient/${data.patientId}`} className="inline-block bg-blue-500 text-white px-4 py-2 rounded m-2 hover:bg-blue-600 transition duration-300">
                 View Patient Details
